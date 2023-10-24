@@ -1,0 +1,82 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'com.google.protobuf' version '0.8.17'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+
+group = 'com.baidu.bce'
+version = '1.0.0'
+
+shadowJar {
+    archiveFileName = "driversdk.jar"
+    mergeServiceFiles()
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    grpcVersion = '1.56.0'
+    fastjsonVersion = '2.0.35'
+    lombokVersion = '1.18.28'
+    snakeyamlVersion = '2.0'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.17.3'
+    }
+    generatedFilesBaseDir = "$projectDir/src/generated"
+    clean {
+        delete generatedFilesBaseDir
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+dependencies {
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+    implementation "io.grpc:grpc-core:${grpcVersion}"
+    implementation "io.grpc:grpc-services:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+
+    implementation "org.yaml:snakeyaml:${snakeyamlVersion}"
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+idea {
+    module {
+        sourceDirs += file('src/generated/main/java')
+        sourceDirs += file('src/generated/main/grpc')
+        generatedSourceDirs += file('src/generated/main/java')
+        generatedSourceDirs += file('src/generated/main/grpc')
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('copyShadowJar', Copy) {
+    from shadowJar.outputs
+    into '../../../demo/java/custom-java/libs/'
+}
+
+copyShadowJar.dependsOn shadowJar
