@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package     = "./proto";
+
+package proto;
+
+message RequestArgs
+{
+  uint32 brokerid = 1;
+  string request  = 2;
+}
+
+message ResponseResult
+{
+  string data     = 1;
+}
+
+service Driver
+{
+  // 宿主（client） --> 驱动（server）
+  rpc GetDriverInfo( RequestArgs ) returns ( ResponseResult );
+  rpc SetConfig( RequestArgs ) returns ( ResponseResult );
+
+  rpc Setup( RequestArgs ) returns ( ResponseResult );
+  rpc Start( RequestArgs ) returns ( ResponseResult );
+  rpc Restart( RequestArgs ) returns ( ResponseResult );
+  rpc Stop( RequestArgs ) returns ( ResponseResult );
+
+  rpc Get ( RequestArgs ) returns ( ResponseResult );
+  rpc Set ( RequestArgs ) returns ( ResponseResult );
+}
+
+service Report
+{
+  // 驱动（client） --> 宿主（server）
+  rpc Post ( RequestArgs ) returns ( ResponseResult );
+  rpc State ( RequestArgs ) returns ( ResponseResult );
+}

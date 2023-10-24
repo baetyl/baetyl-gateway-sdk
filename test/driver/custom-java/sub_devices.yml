@@ -1,0 +1,33 @@
+devices:
+  - name: custom-zx
+    version: 1680267765qc3zxy
+    deviceModel: custom-simulator
+    accessTemplate: custom-access-template
+    deviceTopic:
+      delta:
+        qos: 0
+        topic: thing/custom-simulator/custom-zx/property/invoke
+      report:
+        qos: 0
+        topic: thing/custom-simulator/custom-zx/property/post
+      event:
+        qos: 0
+        topic: thing/custom-simulator/custom-zx/raw/c2d
+      get:
+        qos: 0
+        topic: $baetyl/device/custom-zx/get
+      getResponse:
+        qos: 0
+        topic: $baetyl/device/custom-zx/getResponse
+      eventReport:
+        qos: 0
+        topic: thing/custom-simulator/custom-zx/event/post
+      propertyGet:
+        qos: 0
+        topic: thing/custom-simulator/custom-zx/property/get
+      lifecycleReport:
+        qos: 1
+        topic: thing/custom-simulator/custom-zx/lifecycle/post
+    accessConfig:
+      custom: '{"device": "custom-dev-0","interval": 3000000000}'
+driver: ""
