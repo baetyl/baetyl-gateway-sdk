@@ -1,6 +1,6 @@
-# BAETYL GATEWAY SDK
-
 [![Baetyl-logo](./docs/logo_with_name.png)](https://baetyl.io)
+
+# BAETYL GATEWAY SDK
 
 [![License](https://img.shields.io/github/license/baetyl/baetyl-gateway-sdk?color=blue)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/baetyl/baetyl-gateway-sdk?style=social)](Stars)
@@ -61,6 +61,53 @@ SDK 主要提供下面三部分功能
 * demo/{language}: 目录下 java、golang、python、csharp 包含、基于对应语言 SDK 的一个自定义驱动的 Demo 的实现，Demo 实现了对模拟三个点位的采集和上报过程
 
 ./test
-* test/baetyl-broker: 目录下包含一个小型的 MQTT Broker 实现的二进制程序，用于帮助驱动的开发和调试工作，具体文件见 v0.0.0 Pre Release `baetyl-broker.zip` 中
-* test/baetyl-gateway: 目录下包含 baetyl 软网关的二进制程序，用于帮助驱动的开发和调试工作，具体文件见 v0.0.0 Pre Release `baetyl-gateway.zip` 中
+* test/baetyl-broker: 目录下包含一个小型的 MQTT Broker 实现的二进制程序，用于帮助驱动的开发和调试工作，具体文件见 v0.0.0 Pre Release [baetyl-broker.tgz](https://github.com/baetyl/baetyl-gateway-sdk/releases/download/v0.0.0/baetyl-broker.tgz) 中
+* test/baetyl-gateway: 目录下包含 baetyl 软网关的二进制程序，用于帮助驱动的开发和调试工作，具体文件见 v0.0.0 Pre Release [baetyl-gateway.tgz](https://github.com/baetyl/baetyl-gateway-sdk/releases/download/v0.0.0/baetyl-gateway.tgz) 中
 * test/driver/custom-{language}: 提供个语言 Demo 二进制运行的配置文件，搭配上述工具可以运行软网关及开发的驱动
+
+## SDK 开发
+项目提供了若干语言的 SDK 实现
+
+* [Golang SDK](./sdk/golang)
+* [Java SDK](./sdk/java)
+* [Python SDK](./sdk/pyhton)
+* [Golang SDK](./sdk/golang)
+
+说明
+
+* 源码可在项目对应目录下查看
+* Release 中也提供了各语言 SDK 对应的产出，可直接按个语言依赖方式引入使用，具体产出文件和使用方式见各语言 SDK 目录下的 README.md
+
+若需要自己从头实现一个 SDK 可以参考 [sdk/README.md](./sdk/README.md) 的说明进行开发
+
+## 自定义驱动开发
+项目提供了基于上述每种 SDK 的自定义驱动协议的实现
+
+* [Golang Demo](./demo/golang)
+* [Java Demo](./demo/java)
+* [Python Demo](./demo/pyhton)
+* [Golang Demo](./demo/golang)
+
+说明
+
+* 源码可在项目对应目录下查看
+* Release 中也提供了各语言 Demo 对应的产出，可直接进行测试使用，具体产出文件和使用方式见各语言 SDK 目录下的 README.md
+
+若需要自己实现一个协议可以参考 [demo/README.md](./demo/README.md) 的说明进行开发
+
+## 运行
+参照前文架构，一个具体的驱动托管到 baetyl-gateway 来管控，最终驱动的集采数据同样由 baetyl-gateway 统一向外输出
+
+在测试运行时，包含以下 4 个角色
+
+* driver : 一个基于 SDK 实现的驱动实例，由 baetyl-gateway 来启停控制生命周期
+* baetyl-gateway : 软网关主程序，纳管南向协议，处理集采数据，统一数据格式通过北向协议向上上报，当前测试场景中采用 MQTT 向上上报
+* baetyl-broker : MQTT 消息中间件，提供 MQTT 消息订阅发布功能
+* mqtt-client : 当前测试场景采用 MQTT Box（也可选用其他客户端程序或软件），用于发布和订阅消息
+
+工作流如图所示：
+
+<img src="./docs/collection_workflow.png" width="500" alt="workflow">
+
+具体各语言 Demo 运行方式见 [test/README.md](./test/README.md)
+

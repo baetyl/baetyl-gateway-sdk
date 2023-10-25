@@ -12,3 +12,5 @@ output
 */baetyl-broker/*
 *.jar
 *.dll
+*.tgz
+*.zip
