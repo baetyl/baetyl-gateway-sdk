@@ -1,0 +1,14 @@
+.svn
+.tmp
+.download
+output
+.*.swp
+.*.swo
+.DS_Store
+.idea/
+*/gradle/*
+*/libs/*
+*/baetyl-gateway/*
+*/baetyl-broker/*
+*.jar
+*.dll

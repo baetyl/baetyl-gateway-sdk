@@ -1,0 +1,10 @@
+custom-simulator:
+  - name: temperature
+    type: float32
+    mode: ro
+  - name: humidity
+    type: float32
+    mode: ro
+  - name: pressure
+    type: float32
+    mode: rw
