@@ -1,6 +1,5 @@
-[![Baetyl-logo](./docs/logo_with_name.png)](https://baetyl.io)
-
 # BAETYL GATEWAY SDK
+[![Baetyl-logo](./docs/logo_with_name.png)](https://baetyl.io)
 
 [![License](https://img.shields.io/github/license/baetyl/baetyl-gateway-sdk?color=blue)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/baetyl/baetyl-gateway-sdk?style=social)](Stars)

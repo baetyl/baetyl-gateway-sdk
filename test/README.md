@@ -64,7 +64,7 @@
             └── sub_devices.yml
 ```
 
-**!!! 工作目录：baetyl-gateway-sdk 项目根目录, 即 ./ **
+**！！！工作目录：baetyl-gateway-sdk 项目根目录, 即 ./**
 
 **步骤 1** 
 
