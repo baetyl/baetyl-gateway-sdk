@@ -192,14 +192,18 @@ service Driver
 ```
 
 各语言示例
+
+java
 ```java
 System.out.println("1|1|tcp|127.0.0.1:" + port + "|grpc");
 ```
 
+golang
 ```go
 fmt.Printf("1|1|tcp|127.0.0.1:%d|grpc", port);
 ```
 
+python
 ```python
 print("1|1|tcp|127.0.0.1:xxxx|grpc")
 ```

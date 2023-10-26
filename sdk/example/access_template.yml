@@ -21,7 +21,7 @@ custom-access-template:
         custom: '{"name":"pressure","type":"float32","index":2}'
       current: null
       expect: null
-  mappings:
+  mappings:   # 点位计算映射规则
     - attribute: temperature
       type: value
       expression: x1
