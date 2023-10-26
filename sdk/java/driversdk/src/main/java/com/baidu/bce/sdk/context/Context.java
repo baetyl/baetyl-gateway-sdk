@@ -19,6 +19,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Context 是一个包含 Baetyl 设备管理上下文的类
+ * 提供了加载 access_template.yml、models.yml、sub_devices.yml 三个配置文件并解析到对应数据结构类的实现
+ */
 @Data
 public class Context {
     public static final String DEFAULT_SUB_DEVICE_CONF = "sub_devices.yml";
@@ -53,6 +57,11 @@ public class Context {
         this.deviceInfos = new HashMap<>();
     }
 
+    /**
+     * 提供了加载三个 yaml 配置文件的具体实现，下面两个参数一般在实现 IDriver 接口时，由 setup 方法传入
+     * @param path 配置文件所在目录
+     * @param driverName 驱动的名称
+     */
     public void loadYamlConfig(String path, String driverName) {
         this.driverConfigPathBase = path;
         try {
@@ -90,6 +99,11 @@ public class Context {
         }
     }
 
+    /**
+     * 获取指定名称的驱动下所有设备信息，设备信息来自对 sub_devices.yml 文件的解析
+     * @param driverName 驱动名称
+     * @return 设备信息列表
+     */
     public List<DeviceInfo> getAllDevices(String driverName) {
         List<DeviceInfo> res = new ArrayList<>();
         for (String name : this.deviceInfos.get(driverName).keySet()) {
@@ -98,6 +112,12 @@ public class Context {
         return res;
     }
 
+    /**
+     * 获取指定驱动下配置的指定名称设备的信息
+     * @param driverName 驱动名称
+     * @param deviceName 待获取设备的名称
+     * @return 设备信息
+     */
     public DeviceInfo getDevice(String driverName, String deviceName) {
         if (this.deviceInfos.containsKey(driverName) && this.deviceInfos.get(driverName).containsKey(deviceName)) {
             return this.deviceInfos.get(driverName).get(deviceName);
@@ -105,10 +125,21 @@ public class Context {
         return null;
     }
 
+    /**
+     * 根据设备名称查找对应的驱动名称
+     * @param deviceName 设备名称
+     * @return 驱动名称
+     */
     public String getDriverNameByDevice(String deviceName) {
         return this.deviceDriverMap.get(deviceName);
     }
 
+    /**
+     * 根据驱动名称和设备产品(设备模型)名称获取设备测点列表，设备属性信息来自对 models.yml 的解析
+     * @param driverName 驱动名称
+     * @param deviceModelName 设备产品名称（设备模型名称/物模型名称）
+     * @return 测点列表
+     */
     public List<DeviceProperty> getDeviceModel(String driverName, String deviceModelName) {
         if (this.modelYamls.containsKey(driverName)) {
             return this.modelYamls.get(driverName).get(deviceModelName);
@@ -116,10 +147,21 @@ public class Context {
         return null;
     }
 
+    /**
+     * 根据驱动名称获取所有的设备测点列表
+     * @param driverName 驱动名称
+     * @return 驱动名称为key，测点列表为val的map
+     */
     public Map<String, List<DeviceProperty>> getAllDeviceModels(String driverName) {
         return this.modelYamls.get(driverName);
     }
 
+    /**
+     * 根据驱动名称和接入模板名称获取接入模板数据，接入模板数据来自对 access_template.yml 的解析
+     * @param driverName 驱动名称
+     * @param accessTemplateName 接入模板名称
+     * @return 接入模板信息
+     */
     public AccessTemplate getAccessTemplate(String driverName, String accessTemplateName) {
         if (this.accessTemplateYamls.containsKey(driverName)) {
             return this.accessTemplateYamls.get(driverName).get(accessTemplateName);
@@ -127,6 +169,11 @@ public class Context {
         return null;
     }
 
+    /**
+     * 根据驱动名称获取所有的接入目标信息
+     * @param driverName 驱动名称
+     * @return 驱动名称为key，接入模板为val的map
+     */
     public Map<String, AccessTemplate> getAllAccessTemplates(String driverName) {
         return this.accessTemplateYamls.get(driverName);
     }
