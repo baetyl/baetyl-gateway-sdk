@@ -6,7 +6,7 @@
 
 安装 Protocol Buffers 编译器 protoc：
 
-访问 Protocol Buffers 的 GitHub 仓库（https://github.com/protocolbuffers/protobuf/releases）下载最新的编译器版本
+访问 Protocol Buffers 的 GitHub 仓库 [下载](https://github.com/protocolbuffers/protobuf/releases) 最新的编译器版本
 
 解压缩下载的文件，并将 protoc 可执行文件添加到系统的可执行文件路径中
 
