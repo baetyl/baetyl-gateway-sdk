@@ -1,33 +1,33 @@
 devices:
-  - name: custom-zx
+  - name: custom-golang
     version: 1680267765qc3zxy
     deviceModel: custom-simulator
     accessTemplate: custom-access-template
     deviceTopic:
       delta:
         qos: 0
-        topic: thing/custom-simulator/custom-zx/property/invoke
+        topic: thing/custom-simulator/custom-golang/property/invoke
       report:
         qos: 0
-        topic: thing/custom-simulator/custom-zx/property/post
+        topic: thing/custom-simulator/custom-golang/property/post
       event:
         qos: 0
-        topic: thing/custom-simulator/custom-zx/raw/c2d
+        topic: thing/custom-simulator/custom-golang/raw/c2d
       get:
         qos: 0
-        topic: $baetyl/device/custom-zx/get
+        topic: $baetyl/device/custom-golang/get
       getResponse:
         qos: 0
-        topic: $baetyl/device/custom-zx/getResponse
+        topic: $baetyl/device/custom-golang/getResponse
       eventReport:
         qos: 0
-        topic: thing/custom-simulator/custom-zx/event/post
+        topic: thing/custom-simulator/custom-golang/event/post
       propertyGet:
         qos: 0
-        topic: thing/custom-simulator/custom-zx/property/get
+        topic: thing/custom-simulator/custom-golang/property/get
       lifecycleReport:
         qos: 1
-        topic: thing/custom-simulator/custom-zx/lifecycle/post
+        topic: thing/custom-simulator/custom-golang/lifecycle/post
     accessConfig:
       custom: '{"device": "custom-dev-0","interval": 3000000000}'
 driver: ""
