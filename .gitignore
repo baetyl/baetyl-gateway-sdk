@@ -8,6 +8,9 @@ output
 .idea/
 */gradle/*
 */libs/*
+.vs/
+bin/
+obj/
 */baetyl-gateway/*
 */baetyl-broker/*
 *.jar
