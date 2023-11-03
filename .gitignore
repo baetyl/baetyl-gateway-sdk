@@ -17,3 +17,4 @@ obj/
 *.dll
 *.tgz
 *.zip
+test/driver/custom-golang/custom-golang

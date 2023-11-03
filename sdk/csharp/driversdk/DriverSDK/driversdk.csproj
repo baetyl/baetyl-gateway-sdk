@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <Target Name="CopyGrpcNativeAssetsToOutDir" AfterTargets="Build">
-        <ItemGroup>
-            <NativeAssetToCopy Condition="$([MSBuild]::IsOSPlatform('OSX'))" Include="$(OutDir)runtimes/osx-arm64/native/*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(NativeAssetToCopy)" DestinationFolder="$(OutDir).azurefunctions/runtimes/osx-arm64/native" />
-    </Target>
+   <Target Name="CopyGrpcNativeAssetsToOutDir" AfterTargets="Build">
+       <ItemGroup>
+           <NativeAssetToCopy Condition="$([MSBuild]::IsOSPlatform('OSX'))" Include="$(OutDir)runtimes/osx-arm64/native/*" />
+       </ItemGroup>
+       <Copy SourceFiles="@(NativeAssetToCopy)" DestinationFolder="$(OutDir).azurefunctions/runtimes/osx-arm64/native" />
+   </Target>
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -20,7 +19,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
-    <PackageReference Include="Google.Protobuf" Version="3.24.4" />
+    <PackageReference Include="Google.Protobuf" Version="3.25.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.58.0" />
     <PackageReference Include="Grpc.Tools" Version="2.59.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -53,4 +52,5 @@
     <Compile Remove="Models\Config.cs" />
     <Compile Remove="Models\Point.cs" />
   </ItemGroup>
+
 </Project>
