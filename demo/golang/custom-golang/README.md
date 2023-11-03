@@ -1,5 +1,5 @@
-# 自定义插件开发指南
-开发驱动依赖于对应语言的 SDK，SDK 位于 baetyl-gateway/builtin/sdk/， 开发前确保已经做好 SDK 依赖
+# 自定义 Go 插件开发指南
+开发驱动依赖于对应语言的 SDK，SDK 位于 baetyl/baetyl-gateway-sdk/sdk/， 开发前确保已经做好 SDK 依赖
 
 go.mod 中
 
