@@ -31,6 +31,20 @@ go build -o ../../../../../test/driver/custom-golang/custom-golang .
 
 测试流程详见 [test/README.md](../../../test/README.md)	
 
+也提供 Makefile 
+
+```shell
+# 构建当前平台的二进制，产出位于 demo/golang/custom-golang/output 下
+make build 
+
+# 构建所有平台的二进制，产出位于 demo/golang/custom-golang/output 下，平台包括
+# darwin/amd64 darwin/arm64 linux/amd64 linux/arm64 linux/arm/v7 windows/amd64
+make all PLATFORMS=all
+
+# 清理项目构建
+make clean
+```
+
 ## 1. 文件结构
 ```shell
 custom-golang
