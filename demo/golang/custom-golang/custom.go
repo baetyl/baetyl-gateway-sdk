@@ -1,7 +1,7 @@
 package custom
 
 import (
-	plugin "github.com/baetyl/baetyl-gateway-sdk/sdk/golang"
+	"github.com/baetyl/baetyl-gateway-sdk/sdk/golang"
 	dm "github.com/baetyl/baetyl-go/v2/dmcontext"
 	"github.com/baetyl/baetyl-go/v2/utils"
 )

@@ -3,7 +3,7 @@ module github.com/baetyl/baetyl-gateway-sdk/demo/golang
 go 1.20
 
 require (
-	github.com/baetyl/baetyl-gateway-sdk/sdk/golang v0.0.0-20231027084533-7c929c5ddb04
+	github.com/baetyl/baetyl-gateway-sdk/sdk/golang v0.0.0-20231113064205-5eb8ad58eb15
 	github.com/baetyl/baetyl-go/v2 v2.0.0-20230927024133-d2d4f2aae9e5
 	github.com/hashicorp/go-hclog v1.5.0
 )
