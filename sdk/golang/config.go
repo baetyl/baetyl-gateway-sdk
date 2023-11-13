@@ -1,4 +1,4 @@
-package golang
+package plugin
 
 type DriverConfig struct {
 	Name       string `yaml:"name" json:"name"`
