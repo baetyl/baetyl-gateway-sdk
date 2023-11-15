@@ -1,0 +1,33 @@
+devices:
+  - name: http-in
+    version: 1680267765qc3zxy
+    deviceModel: custom-simulator
+    accessTemplate: custom-access-template
+    deviceTopic:
+      delta:
+        qos: 0
+        topic: thing/custom-simulator/http-in/property/invoke
+      report:
+        qos: 0
+        topic: thing/custom-simulator/http-in/property/post
+      event:
+        qos: 0
+        topic: thing/custom-simulator/http-in/raw/c2d
+      get:
+        qos: 0
+        topic: $baetyl/device/http-in/get
+      getResponse:
+        qos: 0
+        topic: $baetyl/device/http-in/getResponse
+      eventReport:
+        qos: 0
+        topic: thing/custom-simulator/http-in/event/post
+      propertyGet:
+        qos: 0
+        topic: thing/custom-simulator/http-in/property/get
+      lifecycleReport:
+        qos: 1
+        topic: thing/custom-simulator/http-in/lifecycle/post
+    accessConfig:
+      custom: '{"port": ":8087"}'
+driver: ""
