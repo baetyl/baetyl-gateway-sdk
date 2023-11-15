@@ -18,3 +18,4 @@ obj/
 *.tgz
 *.zip
 test/driver/custom-golang/custom-golang
+test/driver/http-in/http-in
