@@ -25,7 +25,6 @@ func NewServer(cfg *ServerConfig) (*Server, error) {
 	s := &Server{
 		cfg: cfg,
 	}
-	defer L().Debug("NewServer function end", s.cfg, s.svr, s)
 
 	router := gin.New()
 	server := &http.Server{
@@ -46,6 +45,9 @@ func NewServer(cfg *ServerConfig) (*Server, error) {
 		}
 		server.TLSConfig = t
 	}
+
+	s.router = router
+	s.svr = server
 	return s, nil
 }
 

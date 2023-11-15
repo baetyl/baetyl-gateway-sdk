@@ -16,11 +16,9 @@ func NewEngine(cfg *Config, report plugin.Report) (*Engine, error) {
 		report: report,
 	}
 	L().Debug("NewEngine function")
-	defer L().Debug("NewEngine function end", len(e.ss))
 
 	var ss []*Server
 	for _, item := range cfg.Servers {
-		L().Error("engine new Server item", item)
 		s, err := NewServer(&item)
 		if err != nil {
 			L().Error("engine new Server error", err.Error())
@@ -30,7 +28,6 @@ func NewEngine(cfg *Config, report plugin.Report) (*Engine, error) {
 		s.SetAPI(a)
 		s.InitRoute()
 		ss = append(ss, s)
-		L().Error("engine new Server item append", len(ss), s.api, s.cfg)
 	}
 
 	e.ss = ss
