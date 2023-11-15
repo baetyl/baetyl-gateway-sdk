@@ -27,7 +27,7 @@ func (a *API) Report(c *gin.Context) (any, error) {
 	L().Debug("working start")
 
 	props := make(map[string]any)
-	err := c.ShouldBindBodyWith(props, binding.JSON)
+	err := c.ShouldBindBodyWith(&props, binding.JSON)
 	if err != nil {
 		return nil, E(ErrInvalid, F("error", err.Error()))
 	}

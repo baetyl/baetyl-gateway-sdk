@@ -80,12 +80,11 @@ func (d *Driver) Start(_ *plugin.Request) (*plugin.Response, error) {
 		L().Debug("Start config", cfg)
 
 		d.engine, err = NewEngine(cfg, d.report)
-		L().Debug("driver NewEngine end")
 		if err != nil {
 			L().Debug("driver NewEngine error", err)
 			return err
 		}
-		L().Debug("driver start engine")
+
 		d.engine.Start()
 		return nil
 	})
