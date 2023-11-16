@@ -36,18 +36,22 @@ type gRPCReportServer struct {
 	Impl Report
 }
 
-func (m *gRPCReportServer) Post(_ context.Context, req *proto.RequestArgs) (resp *proto.ResponseResult, err error) {
+func (m *gRPCReportServer) Post(_ context.Context, req *proto.RequestArgs) (*proto.ResponseResult, error) {
 	res, err := m.Impl.Post(&Request{
 		Req: req.Request,
 	})
-
-	return &proto.ResponseResult{Data: res.Data}, err
+	if err != nil {
+		return &proto.ResponseResult{}, err
+	}
+	return &proto.ResponseResult{Data: res.Data}, nil
 }
 
 func (m *gRPCReportServer) State(_ context.Context, req *proto.RequestArgs) (resp *proto.ResponseResult, err error) {
 	res, err := m.Impl.State(&Request{
 		Req: req.Request,
 	})
-
-	return &proto.ResponseResult{Data: res.Data}, err
+	if err != nil {
+		return &proto.ResponseResult{}, err
+	}
+	return &proto.ResponseResult{Data: res.Data}, nil
 }
