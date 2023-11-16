@@ -67,6 +67,8 @@ public class Message {
 }
 ```
 
+**!!!注意：上报到主程序的消息中，meta必须包含 "deviceName"、"driverName" 两个字段，否则主程序无法识别消息来源产生报错!!!**
+
 #### 2.2.2 常量
 定义如下常量，java 示例
 

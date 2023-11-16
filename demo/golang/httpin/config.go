@@ -9,7 +9,12 @@ import (
 
 type Config struct {
 	DriverName string         `yaml:"drivername" json:"drivername"`
-	Servers    []ServerConfig `yaml:"devices" json:"devices"`
+	Devices    []DeviceConfig `yaml:"devices" json:"devices"`
+}
+
+type DeviceConfig struct {
+	ServerConfig `yaml:",inline" json:",inline"`
+	DeviceName   string `yaml:"deviceName" json:"deviceName"`
 }
 
 type ServerConfig struct {

@@ -5,9 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/baetyl/baetyl-gateway-sdk/sdk/golang"
 	dm "github.com/baetyl/baetyl-go/v2/dmcontext"
 	"github.com/baetyl/baetyl-go/v2/utils"
+
+	"github.com/baetyl/baetyl-gateway-sdk/sdk/golang"
 )
 
 var _ plugin.Driver = &Driver{}
@@ -115,7 +116,7 @@ func (d *Driver) Set(_ *plugin.Request) (*plugin.Response, error) {
 
 func generateConfig(ctx dm.Context, driverName string) (*Config, error) {
 	cfg := &Config{}
-	var svrs []ServerConfig
+	var devs []DeviceConfig
 
 	for _, info := range ctx.GetAllDevices(driverName) {
 		accessConfig := info.AccessConfig
@@ -128,9 +129,12 @@ func generateConfig(ctx dm.Context, driverName string) (*Config, error) {
 		if err != nil {
 			return nil, err
 		}
-		svrs = append(svrs, sc)
+		devs = append(devs, DeviceConfig{
+			ServerConfig: sc,
+			DeviceName:   info.Name,
+		})
 	}
-	cfg.Servers = svrs
+	cfg.Devices = devs
 	cfg.DriverName = driverName
 	if err := utils.SetDefaults(cfg); err != nil {
 		return nil, err
