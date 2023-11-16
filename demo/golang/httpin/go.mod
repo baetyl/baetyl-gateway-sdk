@@ -3,9 +3,10 @@ module github.com/baetyl/baetyl-gateway-sdk/demo/httpin
 go 1.20
 
 require (
-	github.com/baetyl/baetyl-gateway-sdk/sdk/golang v0.0.0-20231113064205-5eb8ad58eb15
+	github.com/baetyl/baetyl-gateway-sdk/sdk/golang v0.0.0-20231116024902-efc902aa7459
 	github.com/baetyl/baetyl-go/v2 v2.0.0-20230927024133-d2d4f2aae9e5
 	github.com/gin-gonic/gin v1.9.1
+	github.com/hashicorp/go-hclog v1.5.0
 )
 
 require (
@@ -36,7 +37,6 @@ require (
 	github.com/google/gofuzz v1.1.0 // indirect
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/gorilla/websocket v1.4.1 // indirect
-	github.com/hashicorp/go-hclog v1.5.0 // indirect
 	github.com/hashicorp/go-plugin v1.5.2 // indirect
 	github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb // indirect
 	github.com/jinzhu/copier v0.1.0 // indirect

@@ -2,9 +2,9 @@ package plugin
 
 import (
 	"context"
-	"log"
 	"net"
 
+	log "github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/go-plugin"
 	"google.golang.org/grpc"
 
@@ -47,6 +47,7 @@ func (c *gRPCClient) Setup(config *BackendConfig) (*Response, error) {
 	reportImpl := config.ReportSvc
 	report := &gRPCReportServer{
 		Impl: reportImpl,
+		log:  c.logger,
 	}
 	// 如果这里使用基于 go-plugin 框架中的 broker.proto 生成并构建的 broker 来做通信
 	// 则需要在客户端从 starStream 流中读取并记录当前链接的配置信息
@@ -77,7 +78,7 @@ func (c *gRPCClient) Setup(config *BackendConfig) (*Response, error) {
 	go func() {
 		er := grpcServer.Serve(lis)
 		if er != nil {
-			c.logger.Fatal("failed to start grpc report server", er)
+			c.logger.Error("failed to start grpc report server", er)
 		}
 	}()
 
