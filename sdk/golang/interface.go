@@ -90,6 +90,7 @@ func (p *DriverGRPCPlugin) GRPCClient(ctx context.Context, broker *plugin.GRPCBr
 	return &gRPCClient{
 		client: proto.NewDriverClient(c),
 		broker: broker,
+		logger: p.Log,
 	}, nil
 }
 
