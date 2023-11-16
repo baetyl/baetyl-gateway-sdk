@@ -13,12 +13,14 @@ import (
 
 type API struct {
 	driverName string
+	deviceName string
 	report     plugin.Report
 }
 
-func NewAPI(driverName string, report plugin.Report) *API {
+func NewAPI(driverName string, deviceName string, report plugin.Report) *API {
 	a := &API{
 		driverName: driverName,
+		deviceName: deviceName,
 		report:     report,
 	}
 	return a
@@ -37,6 +39,8 @@ func (a *API) Report(c *gin.Context) (any, error) {
 		Kind: v1.MessageDeviceReport,
 		Metadata: map[string]string{
 			dm.KeyDriverName: a.driverName,
+			dm.KeyDeviceName: a.deviceName,
+			"clientIP":       c.ClientIP(),
 		},
 		Content: v1.LazyValue{Value: props},
 	}

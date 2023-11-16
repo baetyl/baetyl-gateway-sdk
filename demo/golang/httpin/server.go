@@ -13,13 +13,13 @@ import (
 )
 
 type Server struct {
-	cfg    *ServerConfig
+	cfg    *DeviceConfig
 	svr    *http.Server
 	router *gin.Engine
 	api    *API
 }
 
-func NewServer(cfg *ServerConfig) (*Server, error) {
+func NewServer(cfg *DeviceConfig) (*Server, error) {
 	L().Debug("NewServer function")
 
 	s := &Server{

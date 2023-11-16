@@ -18,13 +18,13 @@ func NewEngine(cfg *Config, report plugin.Report) (*Engine, error) {
 	L().Debug("NewEngine function")
 
 	var ss []*Server
-	for _, item := range cfg.Servers {
+	for _, item := range cfg.Devices {
 		s, err := NewServer(&item)
 		if err != nil {
 			L().Error("engine new Server error", err.Error())
 			continue
 		}
-		a := NewAPI(cfg.DriverName, report)
+		a := NewAPI(cfg.DriverName, item.DeviceName, report)
 		s.SetAPI(a)
 		s.InitRoute()
 		ss = append(ss, s)

@@ -3,7 +3,7 @@ module github.com/baetyl/baetyl-gateway-sdk/demo/httpin
 go 1.20
 
 require (
-	github.com/baetyl/baetyl-gateway-sdk/sdk/golang v0.0.0-20231116024902-efc902aa7459
+	github.com/baetyl/baetyl-gateway-sdk/sdk/golang v0.0.0-20231116032748-64dd228b99ce
 	github.com/baetyl/baetyl-go/v2 v2.0.0-20230927024133-d2d4f2aae9e5
 	github.com/gin-gonic/gin v1.9.1
 	github.com/hashicorp/go-hclog v1.5.0

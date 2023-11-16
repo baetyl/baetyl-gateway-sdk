@@ -26,14 +26,14 @@ var Handshake = plugin.HandshakeConfig{
 }
 
 type Response struct {
-	Data      string
-	RequestID string
+	Data      string `json:"data"`
+	RequestID string `json:"requestID"`
 }
 
 type Request struct {
-	BrokerID  uint32
-	Req       string
-	RequestID string
+	BrokerID  uint32 `json:"brokerID"`
+	Req       string `json:"req"`
+	RequestID string `json:"requestID"`
 }
 
 type Driver interface {
