@@ -49,9 +49,11 @@ func (s *gRPCServer) Setup(ctx context.Context, req *proto.RequestArgs) (*proto.
 	// 详见 grpc_client.go 文件关于不用 go-plugin 框架 broker server 说明
 	// conn, err := s.broker.Dial(req.Brokerid)
 
+	s.log.Error("Brokerid", req.Brokerid)
 	conn, err := grpc.DialContext(ctx, fmt.Sprintf("0.0.0.0:%d", req.Brokerid),
 		grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
+		s.log.Error("grpc dial context error", err)
 		return &proto.ResponseResult{}, err
 	}
 	report := &gRPCReportClient{client: proto.NewReportClient(conn)}
@@ -66,7 +68,6 @@ func (s *gRPCServer) Setup(ctx context.Context, req *proto.RequestArgs) (*proto.
 		return &proto.ResponseResult{}, err
 	}
 	s.driver = driver
-
 	res, err := driver.Setup(config)
 	if err != nil {
 		return &proto.ResponseResult{}, err

@@ -3,11 +3,12 @@ package httpin
 import (
 	"encoding/json"
 
-	"github.com/baetyl/baetyl-gateway-sdk/sdk/golang"
 	dm "github.com/baetyl/baetyl-go/v2/dmcontext"
 	"github.com/baetyl/baetyl-go/v2/spec/v1"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
+
+	"github.com/baetyl/baetyl-gateway-sdk/sdk/golang"
 )
 
 type API struct {
@@ -24,7 +25,7 @@ func NewAPI(driverName string, report plugin.Report) *API {
 }
 
 func (a *API) Report(c *gin.Context) (any, error) {
-	L().Debug("working start")
+	L().Debug("api report start")
 
 	props := make(map[string]any)
 	err := c.ShouldBindBodyWith(&props, binding.JSON)
