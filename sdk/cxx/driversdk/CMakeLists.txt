@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 project(driversdk)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # set output path
@@ -11,7 +11,7 @@ set(LIBRARY_OUTPUT_PATH "${OUTPUT_PATH}")
 
 # set root path
 set(ROOT_INCLUDE "${CMAKE_SOURCE_DIR}/include")
-set(ROOT_DIR "${CMAKE_SOURCE_DIR}")
+set(ROOT_DIR "${CMAKE_SOURCE_DIR}/src")
 
 # set 3rd path
 set(SUFFIX "${CMAKE_SYSTEM_PROCESSOR}")
@@ -26,15 +26,10 @@ set(PROTO_DIR "${CMAKE_SOURCE_DIR}/proto")
 include("${3RD_FINDER}/yaml-cpp.cmake")
 include("${PROTO_DIR}/driver-proto.cmake")
 
-# add subdirectory
-add_subdirectory(${PROTO_DIR})
-#add_subdirectory(${ROOT_DIR}/src/utils)
-#add_subdirectory(${ROOT_DIR}/src/models)
-#add_subdirectory(${ROOT_DIR}/src/context)
-#add_subdirectory(${ROOT_DIR}/src/plugin)
+include_directories(${YAML_CPP_INCLUDE_DIR})
 
-if(CMAKE_BUILD_TYPE STREQUAL Debug)
-    set(CMAKE_C_FLAGS "-DDEBUG ${CMAKE_C_FLAGS}")
-    set(CMAKE_CXX_FLAGS "-DDEBUG ${CMAKE_CXX_FLAGS}")
-    add_definitions("-DDEBUG")
-endif()
+# add subdirectory
+add_subdirectory(${ROOT_DIR}/models)
+add_subdirectory(${ROOT_DIR}/utils)
+add_subdirectory(${ROOT_DIR}/context)
+#add_subdirectory(${ROOT_DIR}/plugin)
