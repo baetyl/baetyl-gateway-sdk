@@ -1,0 +1,42 @@
+custom-access-template:
+  properties:
+    - name: temperature
+      id: "1"
+      type: float32
+      visitor:
+        custom: '{"name":"temperature","type":"float32","index":0}'
+      current: null
+      expect: null
+    - name: humidity
+      id: "2"
+      type: float32
+      visitor:
+        custom: '{"name":"humidity","type":"float32","index":1}'
+      current: null
+      expect: null
+    - name: pressure
+      id: "3"
+      type: float32
+      visitor:
+        custom: '{"name":"pressure","type":"float32","index":2}'
+      current: null
+      expect: null
+  mappings:
+    - attribute: temperature
+      type: value
+      expression: x1
+      precision: 0
+      deviation: 0
+      silentWin: 0
+    - attribute: humidity
+      type: value
+      expression: x2
+      precision: 0
+      deviation: 0
+      silentWin: 0
+    - attribute: pressure
+      type: value
+      expression: x3
+      precision: 0
+      deviation: 0
+      silentWin: 0
