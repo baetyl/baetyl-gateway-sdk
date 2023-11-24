@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_DEVICEPROPERTY_H
-#define DRIVERSDK_DEVICEPROPERTY_H
+#pragma once
 
 #include <string>
 #include <map>
@@ -67,4 +66,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_DEVICEPROPERTY_H

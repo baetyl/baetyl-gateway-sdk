@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_OBJECTTYPE_H
-#define DRIVERSDK_OBJECTTYPE_H
+#pragma once
 
 #include <string>
 
@@ -31,4 +30,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_OBJECTTYPE_H

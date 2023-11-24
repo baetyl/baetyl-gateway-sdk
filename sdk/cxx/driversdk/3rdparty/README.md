@@ -18,7 +18,6 @@ git checkout tags/0.8.0
 ```
 
 ```shell
-cd "yaml-cpp"
 ARCH=`uname -m`
 rm -rf ./build-$ARCH
 rm -rf ./install-$ARCH
@@ -38,13 +37,32 @@ git checkout tags/1.9.5
 ```
 
 ```shell
-cd "jsoncpp"
 ARCH=`uname -m`
 rm -rf ./build-$ARCH
 rm -rf ./install-$ARCH
 mkdir build-$ARCH
 cd build-$ARCH
 cmake .. -DCMAKE_INSTALL_PREFIX=../install-$ARCH
+make -j4
+make install
+```
+
+protobuf
+
+```
+git clone https://github.com/protocolbuffers/protobuf.git
+cd protobuf
+git checkout tags/v25.1
+git submodule update --init --recursive
+```
+
+```
+ARCH=`uname -m`
+rm -rf ./build-$ARCH
+rm -rf ./install-$ARCH
+mkdir build-$ARCH
+cd build-$ARCH
+cmake .. -DCMAKE_INSTALL_PREFIX=../install-$ARCH -Dprotobuf_BUILD_TESTS=OFF
 make -j4
 make install
 ```

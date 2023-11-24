@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_MODELMAPPING_H
-#define DRIVERSDK_MODELMAPPING_H
+#pragma once
 
 #include <string>
 
@@ -44,4 +43,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_MODELMAPPING_H

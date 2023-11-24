@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_EVENT_H
-#define DRIVERSDK_EVENT_H
+#pragma once
 
 #include <string>
 
@@ -22,4 +21,3 @@ namespace DRIVERSDK {
     };
 }
 
-#endif //DRIVERSDK_EVENT_H

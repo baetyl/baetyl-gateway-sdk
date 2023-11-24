@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_ARRAYTYPE_H
-#define DRIVERSDK_ARRAYTYPE_H
+#pragma once
 
 #include <string>
 
@@ -34,4 +33,3 @@ namespace DRIVERSDK {
     };
 }
 
-#endif // DRIVERSDK_ARRAYTYPE_H

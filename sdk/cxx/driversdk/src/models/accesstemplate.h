@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_ACCESSTEMPLATE_H
-#define DRIVERSDK_ACCESSTEMPLATE_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -39,4 +38,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_ACCESSTEMPLATE_H
