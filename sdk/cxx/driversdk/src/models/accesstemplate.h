@@ -2,7 +2,7 @@
 #define DRIVERSDK_ACCESSTEMPLATE_H
 
 #include <string>
-#include <list>
+#include <vector>
 #include "deviceproperty.h" // Include the DeviceProperty header
 #include "modelmapping.h"    // Include the ModelMapping header
 
@@ -12,8 +12,8 @@ namespace DRIVERSDK {
     private:
         std::string name;
         std::string version;
-        std::list<DeviceProperty> properties;
-        std::list<ModelMapping> mappings;
+        std::vector<DeviceProperty> properties;
+        std::vector<ModelMapping> mappings;
 
     public:
         // Default constructor
@@ -21,7 +21,7 @@ namespace DRIVERSDK {
 
         // Parameterized constructor
         AccessTemplate(const std::string& templateName, const std::string& templateVersion,
-                       const std::list<DeviceProperty>& templateProperties, const std::list<ModelMapping>& templateMappings);
+                       const std::vector<DeviceProperty>& templateProperties, const std::vector<ModelMapping>& templateMappings);
 
         // Getter and setter methods
         const std::string& getName() const;
@@ -30,11 +30,11 @@ namespace DRIVERSDK {
         const std::string& getVersion() const;
         void setVersion(const std::string& templateVersion);
 
-        const std::list<DeviceProperty>& getProperties() const;
-        void setProperties(const std::list<DeviceProperty>& templateProperties);
+        const std::vector<DeviceProperty>& getProperties() const;
+        void setProperties(const std::vector<DeviceProperty>& templateProperties);
 
-        const std::list<ModelMapping>& getMappings() const;
-        void setMappings(const std::list<ModelMapping>& templateMappings);
+        const std::vector<ModelMapping>& getMappings() const;
+        void setMappings(const std::vector<ModelMapping>& templateMappings);
     };
 
 } // namespace DRIVERSDK

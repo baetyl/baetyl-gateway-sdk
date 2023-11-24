@@ -86,11 +86,11 @@ namespace DRIVERSDK {
         objectType = propObjectType;
     }
 
-    const std::list<std::string>& DeviceProperty::getObjectRequired() const {
+    const std::vector<std::string>& DeviceProperty::getObjectRequired() const {
         return objectRequired;
     }
 
-    void DeviceProperty::setObjectRequired(const std::list<std::string>& propObjectRequired) {
+    void DeviceProperty::setObjectRequired(const std::vector<std::string>& propObjectRequired) {
         objectRequired = propObjectRequired;
     }
 

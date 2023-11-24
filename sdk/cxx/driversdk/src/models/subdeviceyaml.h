@@ -10,7 +10,7 @@ namespace DRIVERSDK {
 
     class SubDeviceYaml {
     private:
-        std::list<DeviceInfo> devices;
+        std::vector<DeviceInfo> devices;
         std::string driver;
 
     public:
@@ -18,11 +18,11 @@ namespace DRIVERSDK {
         SubDeviceYaml();
 
         // Parameterized constructor
-        SubDeviceYaml(const std::list<DeviceInfo>& subDevices, const std::string& subDriver);
+        SubDeviceYaml(const std::vector<DeviceInfo>& subDevices, const std::string& subDriver);
 
         // Getter and setter methods
-        const std::list<DeviceInfo>& getDevices() const;
-        void setDevices(const std::list<DeviceInfo>& subDevices);
+        const std::vector<DeviceInfo>& getDevices() const;
+        void setDevices(const std::vector<DeviceInfo>& subDevices);
 
         const std::string& getDriver() const;
         void setDriver(const std::string& subDriver);

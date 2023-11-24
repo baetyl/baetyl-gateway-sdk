@@ -23,7 +23,7 @@ namespace DRIVERSDK {
         EnumType enumType;
         ArrayType arrayType;
         std::map<std::string, ObjectType> objectType;
-        std::list<std::string> objectRequired;
+        std::vector<std::string> objectRequired;
 
     public:
         // Default constructor
@@ -60,8 +60,8 @@ namespace DRIVERSDK {
         const std::map<std::string, ObjectType>& getObjectType() const;
         void setObjectType(const std::map<std::string, ObjectType>& propObjectType);
 
-        const std::list<std::string>& getObjectRequired() const;
-        void setObjectRequired(const std::list<std::string>& propObjectRequired);
+        const std::vector<std::string>& getObjectRequired() const;
+        void setObjectRequired(const std::vector<std::string>& propObjectRequired);
 
     };
 
