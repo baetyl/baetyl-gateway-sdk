@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_PROPERTYVISITOR_H
-#define DRIVERSDK_PROPERTYVISITOR_H
+#pragma once
 
 #include <string>
 
@@ -23,4 +22,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_PROPERTYVISITOR_H

@@ -1,7 +1,4 @@
-// subdeviceyaml.h
-
-#ifndef DRIVERSDK_SUBDEVICEYAML_H
-#define DRIVERSDK_SUBDEVICEYAML_H
+#pragma once
 
 #include <list>
 #include "deviceinfo.h" // Include the DeviceInfo header
@@ -30,4 +27,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_SUBDEVICEYAML_H

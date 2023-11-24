@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_CONTEXT_H
-#define DRIVERSDK_CONTEXT_H
+#pragma once
 
 #include <map>
 #include <string>
@@ -55,4 +54,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_CONTEXT_H

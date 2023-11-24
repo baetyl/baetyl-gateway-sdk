@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_ENUMVALUE_H
-#define DRIVERSDK_ENUMVALUE_H
+#pragma once
 
 #include <string>
 
@@ -31,4 +30,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_ENUMVALUE_H

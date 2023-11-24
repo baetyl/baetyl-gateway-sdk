@@ -1,5 +1,4 @@
-#ifndef DRIVERSDK_ACCESSCONFIG_H
-#define DRIVERSDK_ACCESSCONFIG_H
+#pragma once
 
 #include <string>
 namespace DRIVERSDK {
@@ -17,4 +16,4 @@ namespace DRIVERSDK {
         void setCustom(const std::string &customValue);
     };
 }
-#endif // DRIVERSDK_ACCESSCONFIG_H
+

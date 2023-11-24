@@ -1,7 +1,4 @@
-// enumtype.h
-
-#ifndef DRIVERSDK_ENUMTYPE_H
-#define DRIVERSDK_ENUMTYPE_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -31,4 +28,3 @@ namespace DRIVERSDK {
 
 } // namespace DRIVERSDK
 
-#endif // DRIVERSDK_ENUMTYPE_H

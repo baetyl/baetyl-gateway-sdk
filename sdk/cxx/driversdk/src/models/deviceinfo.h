@@ -1,7 +1,4 @@
-// deviceinfo.h
-
-#ifndef DRIVERSDK_DEVICEINFO_H
-#define DRIVERSDK_DEVICEINFO_H
+#pragma once
 
 #include <string>
 
@@ -47,5 +44,3 @@ namespace DRIVERSDK {
         void setAccessConfig(const AccessConfig &config);
     };
 }
-
-#endif // DRIVERSDK_DEVICEINFO_H
