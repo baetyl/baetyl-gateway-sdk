@@ -7,7 +7,7 @@ namespace DRIVERSDK {
 
 // Parameterized constructor
     AccessTemplate::AccessTemplate(const std::string& templateName, const std::string& templateVersion,
-                                   const std::list<DeviceProperty>& templateProperties, const std::list<ModelMapping>& templateMappings)
+                                   const std::vector<DeviceProperty>& templateProperties, const std::vector<ModelMapping>& templateMappings)
             : name(templateName), version(templateVersion), properties(templateProperties), mappings(templateMappings) {}
 
 // Getter and setter methods
@@ -27,19 +27,19 @@ namespace DRIVERSDK {
         version = templateVersion;
     }
 
-    const std::list<DeviceProperty>& AccessTemplate::getProperties() const {
+    const std::vector<DeviceProperty>& AccessTemplate::getProperties() const {
         return properties;
     }
 
-    void AccessTemplate::setProperties(const std::list<DeviceProperty>& templateProperties) {
+    void AccessTemplate::setProperties(const std::vector<DeviceProperty>& templateProperties) {
         properties = templateProperties;
     }
 
-    const std::list<ModelMapping>& AccessTemplate::getMappings() const {
+    const std::vector<ModelMapping>& AccessTemplate::getMappings() const {
         return mappings;
     }
 
-    void AccessTemplate::setMappings(const std::list<ModelMapping>& templateMappings) {
+    void AccessTemplate::setMappings(const std::vector<ModelMapping>& templateMappings) {
         mappings = templateMappings;
     }
 

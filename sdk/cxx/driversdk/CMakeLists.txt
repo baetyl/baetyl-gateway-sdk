@@ -24,12 +24,18 @@ set(PROTO_DIR "${CMAKE_SOURCE_DIR}/proto")
 
 # include 3rd finder
 include("${3RD_FINDER}/yaml-cpp.cmake")
+include("${3RD_FINDER}/jsoncpp.cmake")
 include("${PROTO_DIR}/driver-proto.cmake")
 
-include_directories(${YAML_CPP_INCLUDE_DIR})
+include_directories(
+        ${YAML_CPP_INCLUDE_DIR}
+        ${JSONCPP_INCLUDE_DIR}
+)
 
 # add subdirectory
 add_subdirectory(${ROOT_DIR}/models)
 add_subdirectory(${ROOT_DIR}/utils)
 add_subdirectory(${ROOT_DIR}/context)
 #add_subdirectory(${ROOT_DIR}/plugin)
+
+#add_subdirectory(${ROOT_DIR}/output)
