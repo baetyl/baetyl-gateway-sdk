@@ -23,12 +23,12 @@ set(3RD_FINDER "${THIRDPART_DIR}/3rdfinder")
 set(PROTO_DIR "${CMAKE_SOURCE_DIR}/proto")
 
 # include 3rd finder
-#include("${3RD_FINDER}/yaml-cpp.cmake")
 include("${PROTO_DIR}/driver-proto.cmake")
+include("${3RD_FINDER}/yaml-cpp.cmake")
 
 include_directories(
-#        ${YAML_CPP_INCLUDE_DIR}
         ${DRIVER_PROTO_INCLUDE_DIRS}
+        ${YAML_CPP_INCLUDE_DIRS}
 )
 
 # add subdirectory
