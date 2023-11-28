@@ -11,5 +11,5 @@ public:
     virtual std::string state(const std::string& data) = 0;
 
     // 虚析构函数，确保正确释放资源
-    virtual ~IReport() {}
+    virtual ~IReport() = default;
 };
