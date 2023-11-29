@@ -5,6 +5,8 @@ output*
 src/.idea
 /build*
 */build*
+/install*
+*/install*
 /cmake-build-debug
 /cmake-build-release
 3rdparty/
