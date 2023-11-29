@@ -38,3 +38,18 @@ add_subdirectory(${ROOT_DIR}/context)
 add_subdirectory(${ROOT_DIR}/plugin)
 
 #add_subdirectory(${ROOT_DIR}/output)
+
+# install
+install(DIRECTORY ${ROOT_DIR}
+        DESTINATION include
+        FILES_MATCHING PATTERN "*.h"
+)
+
+# 安装静态链接库到指定的安装目录
+install(TARGETS
+        driverplugin
+        driverutil
+        drivermodel
+        drivercontext
+        ARCHIVE DESTINATION lib
+)
