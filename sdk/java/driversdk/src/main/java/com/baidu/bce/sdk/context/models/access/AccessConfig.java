@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AccessConfig {
     private String custom;
+    private Opcda opcda;
 }

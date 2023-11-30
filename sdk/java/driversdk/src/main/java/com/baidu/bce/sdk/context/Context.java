@@ -41,6 +41,9 @@ public class Context {
     public static final String MESSAGE_DEVICE_EVENT_REPORT = "thing.event.post";
     public static final String MESSAGE_DEVICE_LIFECYCLE_REPORT = "thing.lifecycle.post";
 
+    public static final int DeviceOffline = 0;
+    public static final int DeviceOnline = 1;
+
     private Map<String, Map<String, List<DeviceProperty>>> modelYamls; // deviceModels
     private Map<String, Map<String, AccessTemplate>> accessTemplateYamls; // accessTemplates
     private Map<String, SubDeviceYaml> subDeviceYamls;
