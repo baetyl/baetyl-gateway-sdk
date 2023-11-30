@@ -20,7 +20,7 @@ repositories {
 ext {
     grpcVersion = '1.56.0'
     fastjsonVersion = '2.0.35'
-    lombokVersion = '1.18.28'
+    lombokVersion = '1.18.30'
     snakeyamlVersion = '2.0'
 }
 

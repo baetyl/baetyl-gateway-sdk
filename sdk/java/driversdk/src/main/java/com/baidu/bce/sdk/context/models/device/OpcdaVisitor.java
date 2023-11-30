@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PropertyVisitor {
-    private String custom;
-    private OpcdaVisitor opcda;
+public class OpcdaVisitor {
+    private String datapath;
+    private String type;
 }
