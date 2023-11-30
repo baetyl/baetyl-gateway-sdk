@@ -1,0 +1,10 @@
+node-red:
+  - name: humidity
+    type: int32
+    mode: rw
+  - name: pressure
+    type: int32
+    mode: rw
+  - name: temperature
+    type: int32
+    mode: rw

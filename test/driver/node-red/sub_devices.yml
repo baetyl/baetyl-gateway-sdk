@@ -1,0 +1,68 @@
+devices:
+  - name: node-red1
+    version: 1701249838pg2yqc
+    deviceModel: node-red
+    accessTemplate: node-red
+    deviceTopic:
+      delta:
+        qos: 0
+        topic: thing/node-red/node-red1/property/invoke
+      report:
+        qos: 0
+        topic: thing/node-red/node-red1/property/post
+      event:
+        qos: 0
+        topic: thing/node-red/node-red1/raw/c2d
+      get:
+        qos: 0
+        topic: $baetyl/device/node-red1/get
+      getResponse:
+        qos: 0
+        topic: $baetyl/device/node-red1/getResponse
+      eventReport:
+        qos: 0
+        topic: thing/node-red/node-red1/event/post
+      propertyGet:
+        qos: 0
+        topic: thing/node-red/node-red1/property/get
+      lifecycleReport:
+        qos: 1
+        topic: thing/node-red/node-red1/lifecycle/post
+    accessConfig:
+      custom: ""
+  - name: node-red
+    version: 1701249834lrbq4e
+    deviceModel: node-red
+    accessTemplate: node-red
+    deviceTopic:
+      delta:
+        qos: 0
+        topic: thing/node-red/node-red/property/invoke
+      report:
+        qos: 0
+        topic: thing/node-red/node-red/property/post
+      event:
+        qos: 0
+        topic: thing/node-red/node-red/raw/c2d
+      get:
+        qos: 0
+        topic: $baetyl/device/node-red/get
+      getResponse:
+        qos: 0
+        topic: $baetyl/device/node-red/getResponse
+      eventReport:
+        qos: 0
+        topic: thing/node-red/node-red/event/post
+      propertyGet:
+        qos: 0
+        topic: thing/node-red/node-red/property/get
+      lifecycleReport:
+        qos: 1
+        topic: thing/node-red/node-red/lifecycle/post
+    accessConfig:
+      custom: ""
+driver: |-
+  {
+    "port": ":8002",
+    "initAddress": "http://127.0.0.1:1880"
+  }
