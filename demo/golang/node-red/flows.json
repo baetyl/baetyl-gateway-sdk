@@ -1,0 +1,502 @@
+[
+    {
+        "id": "dd67eec6ebe75b3b",
+        "type": "tab",
+        "label": "软网关控制",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "790be6d91c98a3b6",
+        "type": "http in",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "url": "/v1/setup",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "e1daf5e51c7dd12e",
+                "c0fad772e8f8024a"
+            ]
+        ]
+    },
+    {
+        "id": "e488c48fe63e2bb8",
+        "type": "http in",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "url": "/v1/start",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "7750ca094fedf13a",
+                "5cde0309a3986c48"
+            ]
+        ]
+    },
+    {
+        "id": "2985c193a256c2d0",
+        "type": "http in",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "url": "/v1/stop",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 470,
+        "y": 600,
+        "wires": [
+            [
+                "31fea786c93e13b9",
+                "7750ca094fedf13a"
+            ]
+        ]
+    },
+    {
+        "id": "a29fb2cd207b21b4",
+        "type": "function",
+        "z": "dd67eec6ebe75b3b",
+        "name": "msg",
+        "func": "msg.payload = {\n    \"humidity\": 68,\n    \"pressure\": 11,\n    \"temperature\": 49\n}\nmsg.name = \"node-red\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 460,
+        "wires": [
+            [
+                "8dcca957ef96afdd"
+            ]
+        ]
+    },
+    {
+        "id": "8dcca957ef96afdd",
+        "type": "http request",
+        "z": "dd67eec6ebe75b3b",
+        "name": "report",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1:8002/v1/devices/{{{name}}}/report",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1310,
+        "y": 520,
+        "wires": [
+            [
+                "7eb3142d4dee68b2"
+            ]
+        ]
+    },
+    {
+        "id": "10bfb3e61775ffec",
+        "type": "controltimer",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "timerType": "loop",
+        "timerDurationUnit": "second",
+        "timerDurationType": "num",
+        "timerDuration": 5,
+        "timerLoopTimeoutUnit": "second",
+        "timerLoopTimeoutType": "num",
+        "timerLoopTimeout": 0,
+        "loopTimeoutMessageType": "str",
+        "loopTimeoutMessage": "LOOP_TIMEOUT",
+        "timerMaxLoopIterationsType": "num",
+        "timerMaxLoopIterations": 0,
+        "loopMaxIterationsMessageType": "str",
+        "loopMaxIterationsMessage": "MAX_LOOP_ITERATIONS",
+        "isRunningTimerProgressVisible": true,
+        "outputReceivedMessageOnTimerTrigger": true,
+        "outputReceivedMessageOnTimerHalt": false,
+        "startTimerOnReceivalOfUnknownMessage": false,
+        "resetTimerOnReceivalOfUnknownMessage": false,
+        "resetTimerOnReceivalOfStartAction": false,
+        "continueTimerOnReceivalOfStartAction": false,
+        "isDebugModeEnabled": false,
+        "timerTriggeredMessageType": "str",
+        "timerTriggeredMessage": "TIMER_TRIGGERED",
+        "timerHaltedMessageType": "str",
+        "timerHaltedMessage": "TIMER_HALTED",
+        "isStartActionEnabled": true,
+        "isStopActionEnabled": true,
+        "isResetActionEnabled": true,
+        "isPauseActionEnabled": true,
+        "isContinueActionEnabled": true,
+        "actionPropertyNameType": "str",
+        "actionPropertyName": "payload",
+        "startActionNameType": "str",
+        "startActionName": "START",
+        "stopActionNameType": "str",
+        "stopActionName": "STOP",
+        "resetActionNameType": "str",
+        "resetActionName": "RESET",
+        "pauseActionNameType": "str",
+        "pauseActionName": "PAUSE",
+        "continueActionNameType": "str",
+        "continueActionName": "CONTINUE",
+        "x": 900,
+        "y": 460,
+        "wires": [
+            [
+                "a29fb2cd207b21b4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5cde0309a3986c48",
+        "type": "function",
+        "z": "dd67eec6ebe75b3b",
+        "name": "start",
+        "func": "msg.payload=\"START\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// 部署节点后，此处添加的代码将运行一次。 \nnode.log(\"start init\");",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 460,
+        "wires": [
+            [
+                "10bfb3e61775ffec",
+                "e278e6c13f45cde7"
+            ]
+        ]
+    },
+    {
+        "id": "31fea786c93e13b9",
+        "type": "function",
+        "z": "dd67eec6ebe75b3b",
+        "name": "stop",
+        "func": "node.log(\"stop\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 600,
+        "wires": [
+            [
+                "10bfb3e61775ffec",
+                "e278e6c13f45cde7"
+            ]
+        ]
+    },
+    {
+        "id": "7eb3142d4dee68b2",
+        "type": "debug",
+        "z": "dd67eec6ebe75b3b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1460,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "e03d3c63b4b32fa0",
+        "type": "http request",
+        "z": "dd67eec6ebe75b3b",
+        "name": "State",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1:8002/v1/devices/{{{name}}}/state",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1230,
+        "y": 300,
+        "wires": [
+            [
+                "019343ce6de31090",
+                "9f8d9527786b6623"
+            ]
+        ]
+    },
+    {
+        "id": "fd81e7aa77381b0d",
+        "type": "function",
+        "z": "dd67eec6ebe75b3b",
+        "name": "online",
+        "func": "msg.name = msg.payload\nmsg.payload = {\n    \"state\": true\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 300,
+        "wires": [
+            [
+                "e03d3c63b4b32fa0"
+            ]
+        ]
+    },
+    {
+        "id": "019343ce6de31090",
+        "type": "debug",
+        "z": "dd67eec6ebe75b3b",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1400,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "985993f781a38597",
+        "type": "http in",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "url": "/v1/devices/:name/propertyget",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 540,
+        "y": 760,
+        "wires": [
+            [
+                "7c8a4406846936e2"
+            ]
+        ]
+    },
+    {
+        "id": "fe59f581a6419872",
+        "type": "http response",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1090,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "7c8a4406846936e2",
+        "type": "change",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"humidity\":60,\"pressure\":11,\"temperature\":49}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 760,
+        "wires": [
+            [
+                "fe59f581a6419872"
+            ]
+        ]
+    },
+    {
+        "id": "7750ca094fedf13a",
+        "type": "http response",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 680,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "e1daf5e51c7dd12e",
+        "type": "http response",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c0fad772e8f8024a",
+        "type": "function",
+        "z": "dd67eec6ebe75b3b",
+        "name": "GetDeviceList",
+        "func": "var devices = msg.payload.devices\nmsg.enum = new Array()\nfor (var i=0; i<devices.length; i++) {\n    msg.enum[i] = devices[i][\"deviceName\"]\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 300,
+        "wires": [
+            [
+                "9f8d9527786b6623"
+            ]
+        ]
+    },
+    {
+        "id": "9f8d9527786b6623",
+        "type": "loop",
+        "z": "dd67eec6ebe75b3b",
+        "name": "DeviceList",
+        "kind": "enum",
+        "count": "",
+        "initial": "1",
+        "step": "1",
+        "condition": "",
+        "conditionType": "js",
+        "when": "before",
+        "enumeration": "enum",
+        "enumerationType": "msg",
+        "limit": "",
+        "loopPayload": "loop-val",
+        "finalPayload": "final-orig",
+        "x": 890,
+        "y": 300,
+        "wires": [
+            [],
+            [
+                "fd81e7aa77381b0d",
+                "063f7881750c0d9c"
+            ]
+        ]
+    },
+    {
+        "id": "ff87b7b9a41ff88f",
+        "type": "function",
+        "z": "dd67eec6ebe75b3b",
+        "name": "msg",
+        "func": "msg.payload = {\n    \"humidity\": 67,\n    \"pressure\": 10,\n    \"temperature\": 48\n}\nmsg.name = \"node-red1\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 600,
+        "wires": [
+            [
+                "8dcca957ef96afdd"
+            ]
+        ]
+    },
+    {
+        "id": "e278e6c13f45cde7",
+        "type": "controltimer",
+        "z": "dd67eec6ebe75b3b",
+        "name": "",
+        "timerType": "loop",
+        "timerDurationUnit": "second",
+        "timerDurationType": "num",
+        "timerDuration": 6,
+        "timerLoopTimeoutUnit": "second",
+        "timerLoopTimeoutType": "num",
+        "timerLoopTimeout": 0,
+        "loopTimeoutMessageType": "str",
+        "loopTimeoutMessage": "LOOP_TIMEOUT",
+        "timerMaxLoopIterationsType": "num",
+        "timerMaxLoopIterations": 0,
+        "loopMaxIterationsMessageType": "str",
+        "loopMaxIterationsMessage": "MAX_LOOP_ITERATIONS",
+        "isRunningTimerProgressVisible": true,
+        "outputReceivedMessageOnTimerTrigger": true,
+        "outputReceivedMessageOnTimerHalt": false,
+        "startTimerOnReceivalOfUnknownMessage": false,
+        "resetTimerOnReceivalOfUnknownMessage": false,
+        "resetTimerOnReceivalOfStartAction": false,
+        "continueTimerOnReceivalOfStartAction": false,
+        "isDebugModeEnabled": false,
+        "timerTriggeredMessageType": "str",
+        "timerTriggeredMessage": "TIMER_TRIGGERED",
+        "timerHaltedMessageType": "str",
+        "timerHaltedMessage": "TIMER_HALTED",
+        "isStartActionEnabled": true,
+        "isStopActionEnabled": true,
+        "isResetActionEnabled": true,
+        "isPauseActionEnabled": true,
+        "isContinueActionEnabled": true,
+        "actionPropertyNameType": "str",
+        "actionPropertyName": "payload",
+        "startActionNameType": "str",
+        "startActionName": "START",
+        "stopActionNameType": "str",
+        "stopActionName": "STOP",
+        "resetActionNameType": "str",
+        "resetActionName": "RESET",
+        "pauseActionNameType": "str",
+        "pauseActionName": "PAUSE",
+        "continueActionNameType": "str",
+        "continueActionName": "CONTINUE",
+        "x": 900,
+        "y": 600,
+        "wires": [
+            [
+                "ff87b7b9a41ff88f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "063f7881750c0d9c",
+        "type": "debug",
+        "z": "dd67eec6ebe75b3b",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 220,
+        "wires": []
+    }
+]

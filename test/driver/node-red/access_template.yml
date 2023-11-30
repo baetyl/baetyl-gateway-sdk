@@ -1,0 +1,39 @@
+node-red:
+  properties:
+    - name: humidity
+      id: "1"
+      visitor:
+        custom: '{}'
+      current: null
+      expect: null
+    - name: pressure
+      id: "2"
+      visitor:
+        custom: '{}'
+      current: null
+      expect: null
+    - name: temperature
+      id: "3"
+      visitor:
+        custom: '{}'
+      current: null
+      expect: null
+  mappings:
+    - attribute: humidity
+      type: value
+      expression: x1
+      precision: 0
+      deviation: 0
+      silentWin: 0
+    - attribute: pressure
+      type: value
+      expression: x2
+      precision: 0
+      deviation: 0
+      silentWin: 0
+    - attribute: temperature
+      type: value
+      expression: x3
+      precision: 0
+      deviation: 0
+      silentWin: 0
