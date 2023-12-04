@@ -3,8 +3,6 @@ package plugin
 import (
 	"context"
 
-	log "github.com/hashicorp/go-hclog"
-
 	"github.com/baetyl/baetyl-gateway-sdk/sdk/golang/proto"
 )
 
@@ -36,15 +34,9 @@ func (m *gRPCReportClient) State(req *Request) (*Response, error) {
 
 type gRPCReportServer struct {
 	Impl Report
-	log  log.Logger
 }
 
 func (m *gRPCReportServer) Post(_ context.Context, req *proto.RequestArgs) (*proto.ResponseResult, error) {
-	if req != nil {
-		m.log.Debug("req request invalid")
-		return &proto.ResponseResult{}, nil
-	}
-	m.log.Debug("req request", req.Request)
 	res, err := m.Impl.Post(&Request{
 		Req: req.Request,
 	})
