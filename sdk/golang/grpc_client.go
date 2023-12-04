@@ -47,7 +47,6 @@ func (c *gRPCClient) Setup(config *BackendConfig) (*Response, error) {
 	reportImpl := config.ReportSvc
 	report := &gRPCReportServer{
 		Impl: reportImpl,
-		log:  c.logger,
 	}
 	// 如果这里使用基于 go-plugin 框架中的 broker.proto 生成并构建的 broker 来做通信
 	// 则需要在客户端从 starStream 流中读取并记录当前链接的配置信息
