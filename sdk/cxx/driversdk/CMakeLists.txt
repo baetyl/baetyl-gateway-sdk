@@ -4,11 +4,6 @@ project(driversdk)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-# set output path
-set(OUTPUT_PATH "${CMAKE_SOURCE_DIR}/output-${CMAKE_SYSTEM_PROCESSOR}")
-set(EXECUTABLE_OUTPUT_PATH "${OUTPUT_PATH}")
-set(LIBRARY_OUTPUT_PATH "${OUTPUT_PATH}")
-
 # set root path
 set(ROOT_INCLUDE "${CMAKE_SOURCE_DIR}/include")
 set(ROOT_DIR "${CMAKE_SOURCE_DIR}/src")
@@ -40,7 +35,7 @@ add_subdirectory(${ROOT_DIR}/plugin)
 #add_subdirectory(${ROOT_DIR}/output)
 
 # install
-install(DIRECTORY ${ROOT_DIR}
+install(DIRECTORY ${ROOT_DIR}/
         DESTINATION include
         FILES_MATCHING PATTERN "*.h"
 )

@@ -17,5 +17,9 @@ obj/
 *.dll
 *.tgz
 *.zip
+/build*
+*/build*
+/install*
+*/install*
 test/driver/custom-golang/custom-golang
 test/driver/http-in/http-in
