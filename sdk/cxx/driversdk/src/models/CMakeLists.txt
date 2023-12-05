@@ -11,6 +11,7 @@ set(DRIVER_MODEL_SRC_LIST
         objecttype.cpp
         propertyvisitor.cpp
         subdeviceyaml.cpp
+        message.cpp
 )
 
 add_library(drivermodel STATIC ${DRIVER_MODEL_SRC_LIST})

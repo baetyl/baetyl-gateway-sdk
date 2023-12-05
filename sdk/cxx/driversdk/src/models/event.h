@@ -1,23 +1,29 @@
 #pragma once
 
+#include <iostream>
+#include <variant>
 #include <string>
 
 namespace DRIVERSDK {
+
+    template <typename T>
     class Event {
+    public:
+        // Constructors
+        Event();
+        Event(const std::string& type, const T& payload);
+
+        // Getters
+        std::string getType() const;
+        T getPayload() const;
+
+        // Setters
+        void setType(const std::string& type);
+        void setPayload(const T& payload);
+
     private:
         std::string type;
-        void *payload;
-
-    public:
-        Event(const std::string &eventType, void *eventPayload);
-
-        const std::string &getType() const;
-
-        void setType(const std::string &eventType);
-
-        const void *getPayload() const;
-
-        void setPayload(void *eventPayload);
+        T payload;
     };
-}
 
+} // namespace DRIVERSDK
