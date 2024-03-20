@@ -69,7 +69,7 @@ SDK 主要提供下面三部分功能
 
 * [Golang SDK](./sdk/golang)
 * [Java SDK](./sdk/java)
-* [Python SDK](./sdk/pyhton)
+* [Python SDK](./sdk/python)
 * [C# SDK](./sdk/csharp)
 
 说明
@@ -84,7 +84,7 @@ SDK 主要提供下面三部分功能
 
 * [Golang Demo](./demo/golang)
 * [Java Demo](./demo/java)
-* [Python Demo](./demo/pyhton)
+* [Python Demo](./demo/python)
 * [C# Demo](./demo/csharp)
 
 说明
