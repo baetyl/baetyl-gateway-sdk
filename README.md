@@ -4,24 +4,27 @@
 [![License](https://img.shields.io/github/license/baetyl/baetyl-gateway-sdk?color=blue)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/baetyl/baetyl-gateway-sdk?style=social)](Stars)
 
-Baetyl-Gateway 是基于 [go-plugin](https://github.com/hashicorp/go-plugin) 开源框架实现的 BIE 软网关。
+[中文](./README_zh.md)
 
-旨在解决工业物联网领域中面临的海量异构设备数据难以统一接入的问题，此框架致力于将各种设备使用的不同通信协议数据转化为一致的物联网标准协议，从而实现设备与物联网系统之间的互联互通，为工业生产和制造过程提供全面的数据支持。
+Baetyl-Gateway is a BIE software gateway implemented based on the open-source framework [go-plugin](https://github.com/hashicorp/go-plugin).
 
-## 架构
+Aimed at addressing the challenge of unifying data access from massive heterogeneous devices in the industrial IoT domain, this framework is dedicated to converting data from various device communication protocols into a consistent IoT standard protocol. This ensures connectivity between devices and IoT systems, providing comprehensive data support for industrial production and manufacturing processes.
+
+## Architecture
 ![Baetyl-logo](./docs/baetyl-gateway.png)
 
 ### baetyl-gateway-sdk
-baetyl-gateway-sdk 负责完成具体驱动与 baetyl-gateway 主进程的基础通信的封装
+baetyl-gateway-sdk is responsible for encapsulating the basic communication between specific drivers and the baetyl-gateway main process.
 
-对应于架构图中蓝色虚线框部分
+It corresponds to the blue dashed box in the architecture diagram.
 
-SDK 主要提供下面三部分功能
-* 驱动协议实现时可以调用对应语言的 SDK 的接口完成数据的上报同步
-* 通过实现 SDK 预定义的接口，可以将驱动托管给 baetyl-gateway 主进程，由主进程负责驱动的启停等操作
-* 提供对 baetyl-gateway 框架下驱动的三个配置文件 access_template.yml、models.yml、sub_devices.yml 的解析逻辑的封装
+The SDK mainly provides the following three functions:
+* During the implementation of the driver protocol, the interfaces of the corresponding language SDK can be called to complete data reporting and synchronization.
+* By implementing the predefined interfaces of the SDK, the driver can be hosted to the baetyl-gateway main process, which will handle the start and stop operations of the driver.
+* Provides encapsulation logic for parsing the three configuration files of the baetyl-gateway framework: access_template.yml, models.yml, sub_devices.yml.
 
-## 文件结构
+## Directory Structure
+
 ```
 .
 ├── LICENSE
@@ -50,63 +53,61 @@ SDK 主要提供下面三部分功能
         ├── custom-python
         └── custom-csharp
 ```
+
 ./sdk
-* sdk/README.md: 通用的 SDK 开发指南  
-* sdk/{language}: 目录下 java、golang、python、csharp 包含具体各语言 SDK 的实现
-* sdk/proto: 定义软网关宿主服务和驱动服务支持的 rpc 函数列表，具体函数定义会在下文给出介绍
-* sdk/example: 给出了 baetyl-gateway 框架下最终提供给驱动的三个配置文件的示例，具体示例内容会在下文给出介绍
+* sdk/README.md: General SDK development guide
+* sdk/{language}: Contains the implementation of SDKs in specific languages (java, golang, python, csharp)
+* sdk/proto: Defines the list of RPC functions supported by the soft gateway host service and driver service. Specific function definitions will be introduced below.
+* sdk/example: Provides examples of the three configuration files ultimately provided to the driver under the baetyl-gateway framework. Specific example contents will be introduced below.
 
 ./demo
-* demo/{language}: 目录下 java、golang、python、csharp 包含、基于对应语言 SDK 的一个自定义驱动的 Demo 的实现，Demo 实现了对模拟三个点位的采集和上报过程
+* demo/{language}: Contains the implementation of a custom driver based on the corresponding language SDK (java, golang, python, csharp). The demo implements the process of collecting and reporting data from three simulated points.
 
 ./test
-* test/baetyl-broker: 目录下包含一个小型的 MQTT Broker 实现的二进制程序，用于帮助驱动的开发和调试工作，具体文件见 v0.0.0 Pre Release [baetyl-broker.tgz](https://github.com/baetyl/baetyl-gateway-sdk/releases/download/v0.0.0/baetyl-broker.tgz) 中
-* test/baetyl-gateway: 目录下包含 baetyl 软网关的二进制程序，用于帮助驱动的开发和调试工作，具体文件见 v0.0.0 Pre Release [baetyl-gateway.tgz](https://github.com/baetyl/baetyl-gateway-sdk/releases/download/v0.0.0/baetyl-gateway.tgz) 中
-* test/driver/custom-{language}: 提供个语言 Demo 二进制运行的配置文件，搭配上述工具可以运行软网关及开发的驱动
+* test/baetyl-broker: Contains a binary program for a small MQTT Broker implementation, used to assist in the development and debugging of the driver. Specific files can be found in the v0.0.0 Pre Release [baetyl-broker.tgz](https://github.com/baetyl/baetyl-gateway-sdk/releases/download/v0.0.0/baetyl-broker.tgz).
+* test/baetyl-gateway: Contains the binary program for the baetyl soft gateway, used to assist in the development and debugging of the driver. Specific files can be found in the v0.0.0 Pre Release [baetyl-gateway.tgz](https://github.com/baetyl/baetyl-gateway-sdk/releases/download/v0.0.0/baetyl-gateway.tgz).
+* test/driver/custom-{language}: Provides configuration files for running custom language demo binaries. These can be used in conjunction with the above tools to run the soft gateway and developed drivers.
 
-## SDK 开发
-项目提供了若干语言的 SDK 实现
+## SDK Development
+The project provides SDK implementations in several languages:
 
 * [Golang SDK](./sdk/golang)
 * [Java SDK](./sdk/java)
 * [Python SDK](./sdk/python)
 * [C# SDK](./sdk/csharp)
 
-说明
+Notes:
+* Source code can be viewed in the corresponding directory of the project.
+* The releases also provide the outputs corresponding to each language SDK. These can be directly included and used according to the dependency method of each language. Specific output files and usage methods can be found in the README.md of each language SDK directory.
 
-* 源码可在项目对应目录下查看
-* Release 中也提供了各语言 SDK 对应的产出，可直接按个语言依赖方式引入使用，具体产出文件和使用方式见各语言 SDK 目录下的 README.md
+If you need to implement an SDK from scratch, you can refer to the instructions in [sdk/README.md](./sdk/README.md).
 
-若需要自己从头实现一个 SDK 可以参考 [sdk/README.md](./sdk/README.md) 的说明进行开发
-
-## 自定义驱动开发
-项目提供了基于上述每种 SDK 的自定义驱动协议的实现
+## Custom Driver Development
+The project provides custom driver protocol implementations based on the above SDKs:
 
 * [Golang Demo](./demo/golang)
 * [Java Demo](./demo/java)
 * [Python Demo](./demo/python)
 * [C# Demo](./demo/csharp)
 
-说明
+Notes:
+* Source code can be viewed in the corresponding directory of the project.
+* The releases also provide the outputs corresponding to each language demo. These can be directly tested and used. Specific output files and usage methods can be found in the README.md of each language SDK directory.
 
-* 源码可在项目对应目录下查看
-* Release 中也提供了各语言 Demo 对应的产出，可直接进行测试使用，具体产出文件和使用方式见各语言 SDK 目录下的 README.md
+If you need to implement a protocol yourself, you can refer to the instructions in [demo/README.md](./demo/README.md).
 
-若需要自己实现一个协议可以参考 [demo/README.md](./demo/README.md) 的说明进行开发
+## Running
+Referring to the architecture described earlier, a specific driver is managed by the baetyl-gateway for control. The collected data is also uniformly output by the baetyl-gateway.
 
-## 运行
-参照前文架构，一个具体的驱动托管到 baetyl-gateway 来管控，最终驱动的集采数据同样由 baetyl-gateway 统一向外输出
+In the test run, the following four roles are included:
 
-在测试运行时，包含以下 4 个角色
+* driver : A driver instance implemented based on the SDK, whose lifecycle is controlled by the baetyl-gateway.
+* baetyl-gateway : The main program of the soft gateway, which manages southbound protocols, processes collected data, and reports data upwards using northbound protocols. In the current test scenario, data is reported upwards using MQTT.
+* baetyl-broker : MQTT message middleware that provides MQTT message subscription and publishing functions.
+* mqtt-client : In the current test scenario, MQTT Box (or other client programs or software) is used to publish and subscribe to messages.
 
-* driver : 一个基于 SDK 实现的驱动实例，由 baetyl-gateway 来启停控制生命周期
-* baetyl-gateway : 软网关主程序，纳管南向协议，处理集采数据，统一数据格式通过北向协议向上上报，当前测试场景中采用 MQTT 向上上报
-* baetyl-broker : MQTT 消息中间件，提供 MQTT 消息订阅发布功能
-* mqtt-client : 当前测试场景采用 MQTT Box（也可选用其他客户端程序或软件），用于发布和订阅消息
-
-工作流如图所示：
+The workflow is as shown in the diagram:
 
 <img src="./docs/collection_workflow.png" width="500" alt="workflow">
 
-具体各语言 Demo 运行方式见 [test/README.md](./test/README.md)
-
+For the specific running methods of demos in each language, refer to [test/README.md](./test/README.md).
