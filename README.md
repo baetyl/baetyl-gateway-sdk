@@ -11,7 +11,7 @@ Baetyl-Gateway is a BIE software gateway implemented based on the open-source fr
 Aimed at addressing the challenge of unifying data access from massive heterogeneous devices in the industrial IoT domain, this framework is dedicated to converting data from various device communication protocols into a consistent IoT standard protocol. This ensures connectivity between devices and IoT systems, providing comprehensive data support for industrial production and manufacturing processes.
 
 ## Architecture
-![Baetyl-logo](./docs/baetyl-gateway.png)
+![Baetyl-logo](./docs/baetyl-gateway-en.png)
 
 ### baetyl-gateway-sdk
 baetyl-gateway-sdk is responsible for encapsulating the basic communication between specific drivers and the baetyl-gateway main process.
@@ -108,6 +108,6 @@ In the test run, the following four roles are included:
 
 The workflow is as shown in the diagram:
 
-<img src="./docs/collection_workflow.png" width="500" alt="workflow">
+<img src="./docs/collection_workflow-en.png" width="500" alt="workflow">
 
 For the specific running methods of demos in each language, refer to [test/README.md](./test/README.md).
